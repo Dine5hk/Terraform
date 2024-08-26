@@ -1,1 +1,2 @@
-
+Install Visual Studio Code
+in VS Studio Instal AWS CLI
