@@ -1,4 +1,4 @@
-resource "aws_security_group" "example_sg" {
+resource "aws_security_group" "terraform" {
   name        = "terraform-group"
   description = "Security group terraform"
 
@@ -56,7 +56,7 @@ resource "aws_instance" "app_server" {
   ami           = "ami-0c2af51e265bd5e0e"
   instance_type = "t2.medium"
   count         = 2
-  vpc_security_group_ids = [aws_security_group.example_sg.id]
+  vpc_security_group_ids = [aws_security_group.terraform.id]
 
   root_block_device {
     volume_size = 50
