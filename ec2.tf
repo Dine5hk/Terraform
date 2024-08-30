@@ -1,3 +1,4 @@
+# creation instance & security group
 resource "aws_security_group" "terraform" {
   name        = "terraform-group"
   description = "Security group terraform"
