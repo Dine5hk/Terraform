@@ -71,7 +71,24 @@ resource "aws_instance" "app_server" {
   }
 
   tags = {
-    Name = "terraform-${count.index + 1}"
+    Name = "terra"
+  }
+}
+
+resource "aws_instance" "server" {
+  ami           = "ami-0c2af51e265bd5e0e"
+  instance_type = "t2.micro"
+  count         = 2
+  key_name      = "terraform"
+  vpc_security_group_ids = [aws_security_group.terraform.id]
+
+  root_block_device {
+    volume_size = 50
+    volume_type = "gp2"
+  }
+
+  tags = {
+    Name = "jenkins"
   }
 }
 
