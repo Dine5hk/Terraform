@@ -1,4 +1,5 @@
-# creation instance & security group
+# creation instance & security group  with default vpc
+
 resource "aws_security_group" "terraform" {
   name        = "terraform-group"
   description = "Security group terraform"
