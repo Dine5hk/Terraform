@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "ap-south-1"  # Mumbai region
-}
-
 # Define a security group for the load balancer and instances
 resource "aws_security_group" "sg" {
   name_prefix = "terraform-sg-"
@@ -67,17 +63,12 @@ resource "aws_lb_target_group" "target_group" {
   }
 }
 
-# Define an Auto Scaling Launch Configuration
-resource "aws_launch_configuration" "app" {
-  name          = "terraform-lc"
-  image_id      = "ami-0c2af51e265bd5e0e"  # Replace with your AMI ID
-  instance_type = "t2.micro"
-  security_groups = [aws_security_group.sg.id]
-  key_name       = "terraform"  # Replace with your EC2 key pair name
-
-  lifecycle {
-    create_before_destroy = true
-  }
+resource "aws_lb_target_group_attachment" "example" {
+  target_group_arn = aws_lb_target_group.target_group.arn
+  target_id        = "i-0123ae7fcd57f112d"  # Replace with your existing instance ID
+  port             = 80
 }
+
+
 
 
