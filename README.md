@@ -1,3 +1,11 @@
+# IAM policies for credentials 
+AmazonEC2FullAccess
+AmazonS3FullAccess
+AmazonDynamoDBFullAccess
+AmazonRDSFullAccess
+CloudWatchFullAccess
+IAMFullAccess
+
 # Terraform Command
 terraform init - to check connectivity
 # 
