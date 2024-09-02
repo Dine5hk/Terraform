@@ -18,3 +18,5 @@ terraform destory - to destroy the whole setup
 terraform state list - to list what has been created using terraform 
 # 
 terraform destroy -traget (targetname) - to destory the specfic type
+#
+terraform output > output.txt -- to get ip and instance ip output
