@@ -11,3 +11,10 @@ terraform {
 provider "aws" {
   region  = "ap-south-1"
 }
+
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">= 2.0, < 3.0"
+    }
+  }
+}
