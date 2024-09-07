@@ -75,3 +75,20 @@ resource "aws_instance" "app_server" {
     Name = "terra"
   }
 }
+
+resource "aws_instance" "app_server" {
+  ami           = "ami-0c2af51e265bd5e0e"
+  instance_type = "t2.medium"
+  count         = 2
+  key_name      = "terraform"
+  vpc_security_group_ids = [aws_security_group.terraform.id]
+  user_data = <<EOF
+  #!/bin/bash
+  sudo apt-get update -y
+  sudo apt-get install -y docker.io
+  sudo systemctl start docker
+  sudo systemctl enable docker
+  ${var.grafana}
+  ${var.prometheus}
+  EOF
+}
